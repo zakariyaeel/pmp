@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The OCP & PMP Universe — Mural</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --graphite:#3D4750;
+    --graphite-deep:#262D33;
+    --steel-light:#A7B0BA;
+    --digital-blue:#2E6FF2;
+    --emerald:#12A876;
+    --nature-green:#2F8F5C;
+    --phosphate-gold:#93a4ca;
+    --ink:#0E3626;
+    --ink-deep:#0A2A1D;
+    --paper:#2FE0C4;
+    --paper-dim:#8FD9C6;
+    --line:rgba(47,224,196,0.16);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{background:var(--ink); color:var(--paper); font-family:'Inter',sans-serif; overflow-x:hidden;}
+  body{
+    background-image:
+      repeating-linear-gradient(115deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 64px),
+      radial-gradient(ellipse at 50% -10%, rgba(47,224,196,0.14), transparent 45%),
+      radial-gradient(ellipse at 100% 20%, rgba(31,122,77,0.22), transparent 45%);
+  }
+  .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; text-transform:uppercase; letter-spacing:.18em;
+    font-size:11.5px; color:var(--phosphate-gold); display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:""; width:22px; height:1px; background:var(--phosphate-gold); display:inline-block;}
+  h1,h2,h3{font-family:'Barlow Condensed', sans-serif; text-transform:uppercase; line-height:0.98;}
+
+  /* ===== HERO ===== */
+  .hero{padding:76px 0 54px; position:relative;}
+  .hero .wrap{display:flex; flex-direction:column; gap:22px;}
+  .hero h1{font-weight:800; font-size:clamp(40px,6.4vw,84px); letter-spacing:0.01em;
+    background:linear-gradient(100deg, var(--paper) 30%, var(--phosphate-gold) 55%, var(--emerald) 78%, var(--digital-blue) 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .hero p{max-width:640px; font-size:16.5px; line-height:1.65; color:var(--steel-light); font-weight:400;}
+  .hero-meta{display:flex; gap:34px; margin-top:8px; flex-wrap:wrap;}
+  .hero-meta div{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--paper-dim); text-transform:uppercase; letter-spacing:.08em;}
+  .hero-meta strong{display:block; font-family:'Barlow Condensed',sans-serif; font-size:22px; color:var(--paper); letter-spacing:0; text-transform:none; font-weight:700;}
+
+  /* ===== TRIPTYCH ===== */
+  .triptych{padding:10px 0 8px;}
+  .triptych-grid{display:grid; grid-template-columns:1fr 1.15fr 1fr; gap:0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .panel{padding:44px 30px 40px; position:relative; min-height:560px; display:flex; flex-direction:column;}
+  .panel + .panel{border-left:1px solid var(--line);}
+  .panel.left{background:linear-gradient(160deg, rgba(46,111,242,0.14), rgba(18,168,118,0.10) 70%);}
+  .panel.center{background:linear-gradient(180deg, rgba(217,174,85,0.08), rgba(47,143,92,0.14)); text-align:center; align-items:center;}
+  .panel.right{background:linear-gradient(200deg, rgba(61,71,80,0.5), rgba(38,45,51,0.4));}
+
+  .panel-tag{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--paper-dim); margin-bottom:14px;}
+  .panel h2{font-size:clamp(26px,2.6vw,34px); font-weight:700; margin-bottom:6px;}
+  .panel .dominante{font-size:12px; font-weight:600; letter-spacing:.03em; margin-bottom:22px; font-family:'Inter',sans-serif;}
+  .left .dominante{color:#7FA6FF;}
+  .right .dominante{color:var(--steel-light);}
+  .center .dominante{color:var(--phosphate-gold);}
+
+  .icon-row{display:flex; gap:14px; margin-bottom:22px; flex-wrap:wrap;}
+  .center .icon-row{justify-content:center;}
+  .icon-chip{width:52px; height:52px; border-radius:50%; border:1px solid var(--line); display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.03);}
+  .icon-chip svg{width:26px; height:26px;}
+
+  .panel .msg{font-size:14.5px; line-height:1.62; color:var(--paper); opacity:0.92; margin-top:auto; padding-top:18px; border-top:1px solid var(--line);}
+  .panel .msg b{color:var(--phosphate-gold); font-weight:600;}
+
+  .values{display:flex; gap:12px; margin:6px 0 20px;}
+  .value-pill{font-family:'IBM Plex Mono',monospace; font-size:11px; padding:7px 12px; border:1px solid var(--line); border-radius:20px; display:flex; gap:6px; align-items:center; color:var(--paper);}
+
+  /* central figure */
+  .figure{width:118px; height:118px; margin:4px auto 20px; position:relative;}
+  .figure::before{content:""; position:absolute; inset:-24px; border-radius:50%;
+    background:radial-gradient(circle, rgba(217,174,85,0.35), transparent 70%); filter:blur(2px);}
+  .figure svg{position:relative; width:100%; height:100%;}
+  .center h3.role{font-family:'Inter',sans-serif; font-size:13px; font-weight:600; letter-spacing:.03em; color:var(--paper); margin-bottom:6px;}
+  .center .role-sub{font-size:12px; color:var(--paper-dim); max-width:230px; margin:0 auto 18px;}
+
+  /* ===== RAISON D'ETRE band ===== */
+  .raison{padding:60px 0; border-bottom:1px solid var(--line);}
+  .raison .wrap{display:grid; grid-template-columns:0.9fr 1.6fr; gap:50px; align-items:center;}
+  .raison .eyebrow{margin-bottom:14px;}
+  .raison h2{font-size:clamp(28px,3.6vw,46px); font-weight:700; color:var(--paper); margin-bottom:8px;}
+  .raison .en{font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--phosphate-gold); letter-spacing:.02em;}
+  .raison p{font-size:15px; line-height:1.7; color:var(--steel-light);}
+
+  /* ===== MUST WIN BATTLES ===== */
+  .mwb{padding:64px 0 70px;}
+  .mwb-head{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:34px; flex-wrap:wrap; gap:14px;}
+  .mwb-head h2{font-size:clamp(28px,3.4vw,42px); font-weight:700; color:var(--paper);}
+  .mwb-count{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--paper-dim);}
+  .mwb-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .mwb-card{background:var(--ink); padding:28px 22px; min-height:210px; display:flex; flex-direction:column; gap:14px; transition:background .25s;}
+  .mwb-card:hover{background:var(--graphite-deep);}
+  .mwb-card .num{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--paper-dim);}
+  .mwb-card .icon{width:38px; height:38px;}
+  .mwb-card h4{font-family:'Inter',sans-serif; font-size:14.5px; font-weight:600; color:var(--paper); text-transform:none; line-height:1.3;}
+  .mwb-card p{font-size:12.5px; color:var(--paper-dim); line-height:1.55;}
+
+  /* ===== FOOTER MESSAGE ===== */
+  .closing{padding:60px 0 90px; text-align:center;}
+  .closing p{max-width:720px; margin:0 auto; font-size:clamp(20px,2.6vw,29px); font-family:'Barlow Condensed',sans-serif; font-weight:600; text-transform:none; line-height:1.28; color:var(--paper);}
+  .closing p .accent{color:var(--phosphate-gold);}
+  .closing .foot-tag{margin-top:22px; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--paper-dim);}
+
+  @media (max-width:900px){
+    .triptych-grid{grid-template-columns:1fr;}
+    .panel{min-height:0; padding:34px 24px;}
+    .panel + .panel{border-left:none; border-top:1px solid var(--line);}
+    .raison{padding:44px 0;}
+    .raison .wrap{grid-template-columns:1fr; gap:24px;}
+    .mwb{padding:48px 0 54px;}
+    .mwb-grid{grid-template-columns:1fr 1fr;}
+    .closing{padding:44px 0 64px;}
+  }
+  @media (max-width:640px){
+    .wrap{padding:0 20px;}
+    .hero{padding:48px 0 34px;}
+    .hero h1{font-size:clamp(34px,11vw,52px);}
+    .hero p{font-size:15px;}
+    .panel{padding:30px 20px;}
+    .panel h2{font-size:26px;}
+    .figure{width:92px; height:92px; margin-bottom:14px;}
+    .mwb-head{flex-direction:column; align-items:flex-start; gap:8px;}
+    .mwb-grid{grid-template-columns:1fr 1fr; gap:1px;}
+    .mwb-card{padding:20px 16px; min-height:0;}
+    .closing p{font-size:clamp(19px,5.6vw,24px);}
+  }
+  @media (max-width:420px){
+    .mwb-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Every wall tells a story · OCP &amp; PMP</span>
+    <h1>Welcome to the<br>OCP &amp; PMP universe</h1>
+    <p>This mural embodies the global vision of OCP Group, of which Pakistan Maroc Phosphore is fully part as an ambidextrous organization. It draws its strength from the collective and tells, through a three-part visual journey, the story of a living industry where nature, technology and people come together.</p>
+  </div>
+</section>
+
+<section class="triptych">
+  <div class="triptych-grid">
+
+    <!-- GAUCHE -->
+    <div class="panel left">
+      <span class="panel-tag">Part 01 — Left reading</span>
+      <h2>Exploration &amp;<br>Innovation</h2>
+      <div class="dominante">● Digital blue / Emerald green</div>
+      <div class="icon-row">
+        <div class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="#7FA6FF" stroke-width="1.6"><path d="M12 3a5 5 0 0 0-5 5c0 2 1 3 1.5 4.2.4 1 .5 1.8.5 2.8h6c0-1 .1-1.8.5-2.8C16 11 17 10 17 8a5 5 0 0 0-5-5Z"/><path d="M9.5 17.5h5M10 20h4"/></svg></div>
+        <div class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="#12A876" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 4v3M15 4v3M9 17v3M15 17v3M4 9h3M4 15h3M17 9h3M17 15h3"/></svg></div>
+      </div>
+      <p style="font-size:13.5px; color:var(--paper-dim); line-height:1.6; margin-bottom:18px;">Symbols: a glowing brain, electronic circuits, the 1337 coding school.</p>
+      <div class="values">
+        <div class="value-pill">🎯 Niya — sincere intention</div>
+      </div>
+      <div class="values">
+        <div class="value-pill">⚡ Nefs — creative drive</div>
+      </div>
+      <div class="msg">People are <b>at the heart of data</b> and artificial intelligence, building technological and collaborative progress.</div>
+    </div>
+
+    <!-- CENTRE -->
+    <div class="panel center">
+      <span class="panel-tag">Part 02 — Central reading</span>
+      <h2>Gateway to a<br>sustainable future</h2>
+      <div class="dominante">● Nature green / Steel blue</div>
+      <div class="figure">
+        <svg viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="30" r="15" fill="#3A5A9E" opacity="0.9"/>
+          <path d="M32 30c0-10 8-17 18-17s18 7 18 17" stroke="#12161A" stroke-width="2"/>
+          <rect x="30" y="27" width="40" height="9" rx="4.5" fill="#EDE9DF"/>
+          <path d="M40 55c0-8 4-13 10-13s10 5 10 13v22c0 3-2 5-5 5H45c-3 0-5-2-5-5V55Z" fill="#2F8F5C"/>
+          <path d="M30 60l10-6M70 60l-10-6" stroke="#A7B0BA" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3 class="role">The man in the white helmet (PPE)</h3>
+      <div class="role-sub">Guardian of expertise, symbol of our Safety culture.</div>
+      <div class="msg" style="border-top:none; padding-top:0; margin-top:0;">Our purpose — <b>"Bringing phosphorus to life"</b>: ensuring access to an element essential to global food security, and unlocking the full potential of Moroccan phosphate.</div>
+    </div>
+
+    <!-- DROITE -->
+    <div class="panel right">
+      <span class="panel-tag">Part 03 — Right reading</span>
+      <h2>Exploitation &amp;<br>Technical mastery</h2>
+      <div class="dominante">● Metallic gray / Industrial steel</div>
+      <div class="icon-row">
+        <div class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="#A7B0BA" stroke-width="1.6"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"/><path d="M12 2v3M12 19v3M4.2 4.2l2.2 2.2M17.6 17.6l2.2 2.2M2 12h3M19 12h3M4.2 19.8l2.2-2.2M17.6 6.4l2.2-2.2"/></svg></div>
+        <div class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="#A7B0BA" stroke-width="1.6"><path d="M4 12h6l2-3 2 6 2-3h4"/><rect x="3" y="18" width="18" height="3" rx="1"/></svg></div>
+      </div>
+      <p style="font-size:13.5px; color:var(--paper-dim); line-height:1.6;">Symbols: gears, pipes and interconnected pipelines — the visible mechanics of industrial expertise.</p>
+      <div class="msg">Operational excellence, rigor and <b>the collective strength</b> of our operators guarantee our industrial solidity.</div>
+    </div>
+
+  </div>
+</section>
+
+<section class="raison">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Our purpose</span>
+      <h2>Bringing<br>phosphorus to life</h2>
+      <div class="en">"Bringing phosphorus to life"</div>
+    </div>
+    <p>Our purpose carries a double meaning: ensuring access to an element essential to global food security, and unlocking the full potential of Moroccan phosphate — from the deposit to the fields it nourishes.</p>
+  </div>
+</section>
+
+<section class="mwb">
+  <div class="wrap">
+    <div class="mwb-head">
+      <h2>OCP's Must Win<br>Battles</h2>
+      <span class="mwb-count">04 / illustrated in the central section</span>
+    </div>
+    <div class="mwb-grid">
+
+      <div class="mwb-card">
+        <span class="num">01</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#2F8F5C" stroke-width="1.5"><path d="M12 2v8M12 10l6 3M12 10 6 13M12 10v10"/><circle cx="12" cy="4" r="2"/></svg>
+        <h4>Energy transition</h4>
+        <p>Wind power and green hydrogen toward carbon neutrality.</p>
+      </div>
+
+      <div class="mwb-card">
+        <span class="num">02</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#2E6FF2" stroke-width="1.5"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/></svg>
+        <h4>Water circularity</h4>
+        <p>Desalination and recycling — 100% non-conventional water.</p>
+      </div>
+
+      <div class="mwb-card">
+        <span class="num">03</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#A7B0BA" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>
+        <h4>Smart Plant</h4>
+        <p>Automation, predictive maintenance, data-driven decisions.</p>
+      </div>
+
+      <div class="mwb-card">
+        <span class="num">04</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#3A5A9E" stroke-width="1.5" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg>
+        <h4>African Leadership</h4>
+        <p>Agricultural drones, fertile fields and smart blending for food security.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <p>An industry in full transformation, balancing <span class="accent">immediate performance</span> with future exploration, to build a <span class="accent">sustainable</span>, intelligent and responsible future.</p>
+    <div class="foot-tag">OCP Group × Pakistan Maroc Phosphore</div>
+  </div>
+</section>
+
+</body>
+</html>
